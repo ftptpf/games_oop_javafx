@@ -68,11 +68,43 @@ public class Logic {
         return rst;
     }
 
+    //My code start
+
     public boolean isWin() {
         int[][] table = this.convert();
         boolean result = false;
+        for (int i = 0; i < table.length; i++) {
+            if (allOnHorizon(table, i)|| allOnVertical(table, i)) {
+                result = true;
+                break;
+            }
+
+        }
         return result;
     }
+
+    public static boolean allOnHorizon(int[][] board, int row) {
+        boolean result = true;
+        for (int i = 0; i < board.length; i++) {
+            if (board[row][i] != 1) {
+                result = false;
+                break;
+            }
+        }
+        return result;
+    }
+
+    public static boolean allOnVertical(int[][] board, int column ) {
+        boolean result = true;
+        for (int i = 0; i < board.length; i++) {
+            if (board[i][column] != 1) {
+                result = false;
+                break;
+            }
+        }
+        return result;
+    }
+    //My code finish
 
     public int[][] convert() {
         int[][] table = new int[this.size][this.size];
