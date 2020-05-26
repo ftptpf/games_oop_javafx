@@ -74,9 +74,11 @@ public class Logic {
         int[][] table = this.convert();
         boolean result = false;
         for (int i = 0; i < table.length; i++) {
-            if (allOnHorizon(table, i)|| allOnVertical(table, i)) {
+            if (table[i][i] == 1) {
+                if (allOnHorizon(table, i)|| allOnVertical(table, i)) {
                 result = true;
                 break;
+                }
             }
 
         }
