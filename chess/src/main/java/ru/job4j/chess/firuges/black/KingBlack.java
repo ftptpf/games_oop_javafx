@@ -1,5 +1,4 @@
 package ru.job4j.chess.firuges.black;
-
 import ru.job4j.chess.firuges.Cell;
 import ru.job4j.chess.firuges.Figure;
 
@@ -12,18 +11,20 @@ import ru.job4j.chess.firuges.Figure;
 public class KingBlack implements Figure {
     private final Cell position;
 
-    public KingBlack(final Cell position) {
-        this.position = position;
+    public KingBlack(final Cell ps) {
+        position = ps;
     }
 
     @Override
     public Cell position() {
-        return this.position;
+        return position;
     }
 
     @Override
-    public Cell[] way(Cell source, Cell dest) {
-        return new Cell[] { dest };
+    public Cell[] way(Cell dest) {
+        return new Cell[] {
+                dest
+        };
     }
 
     @Override

@@ -13,9 +13,17 @@ public enum Cell {
     public final int x;
     public final int y;
 
-    Cell(int x, int y) {
-        this.x = x;
-        this.y = y;
+    Cell(int cx, int cy) {
+        x = cx;
+        y = cy;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
     }
 
     public static Cell findBy(int x, int y) {
