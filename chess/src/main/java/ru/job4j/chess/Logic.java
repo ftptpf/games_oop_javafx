@@ -17,14 +17,25 @@ public final class Logic {
 
     public void move(Cell source, Cell dest)
             throws FigureNotFoundException, ImpossibleMoveException, OccupiedCellException {
-        int index = findBy(source);
-        Cell[] steps = figures[index].way(dest);
-        free(steps);
+        int index = findBy(source); //По объекту типа Cell source в массиве figures найти объект типа Figure.
+        Cell[] steps = figures[index].way(dest); //Если объект найден, то нужно получить его ходы до клетки Cell dest.
+        // Это нужно сделать через метод way объекта Figure.
+        free(steps); //Дальше нужно проверить, что массив клеток от метода way не заполнен другими объектами класса Figure.
+        // Если он не заполнен, но нужно в массив figures в позицию, полученную в пункте 1, записать новый объект,
+        // полученный из метода figure.copy.
         figures[index] = figures[index].copy(dest);
     }
-
+    //Метод free должен пройтись по массиву figures и проверить,
+    //что фигуры не занимают элементы из массива cells.
+    //Если они занимают ячейки cells, то метод должен кинуть исключение.
     private boolean free(Cell[] steps) throws OccupiedCellException {
-        return true;
+        for (int index = 0; index < steps.length; index++) {
+            Figure figure = figures[index];
+            if (figure == null) {
+                return true;
+            }
+        }
+        throw new OccupiedCellException();
     }
 
     public void clean() {
