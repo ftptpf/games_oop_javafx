@@ -29,11 +29,15 @@ public final class Logic {
     //что фигуры не занимают элементы из массива cells.
     //Если они занимают ячейки cells, то метод должен кинуть исключение.
     private boolean free(Cell[] steps) throws OccupiedCellException {
+        int st = 0;
         for (int index = 0; index < steps.length; index++) {
             Figure figure = figures[index];
             if (figure == null) {
-                return true;
+                st = st + 1;
             }
+        }
+        if (st == steps.length) {
+            return true;
         }
         throw new OccupiedCellException();
     }
